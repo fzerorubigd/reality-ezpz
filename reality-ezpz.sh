@@ -1178,7 +1178,7 @@ function print_client_configuration {
   client_config="${client_config}&encryption=none"
   client_config="${client_config}&alpn=$([[ ${config[transport]} == 'ws' ]] && echo 'http/1.1' || echo 'h2,http/1.1')"
   client_config="${client_config}&headerType=none"
-  client_config="${client_config}&fp=chrome"
+  client_config="${client_config}&fp=randomized"
   client_config="${client_config}&type=${config[transport]}"
   client_config="${client_config}&flow=$([[ ${config[transport]} == 'tcp' ]] && echo 'xtls-rprx-vision' || true)"
   client_config="${client_config}&sni=${config[domain]}"
@@ -1368,7 +1368,7 @@ $([[ ${config[transport]} == 'grpc' ]] && echo 'gRPC serviceName: '"${config[ser
 TLS: $([[ ${config[security]} == 'reality' ]] && echo 'reality' || echo 'tls')
 SNI: ${config[domain]}
 ALPN: $([[ ${config[transport]} == 'ws' ]] && echo 'http/1.1' || echo 'h2,http/1.1')
-Fingerprint: chrome
+Fingerprint: randomized
 $([[ ${config[security]} == 'reality' ]] && echo "PublicKey: ${config[public_key]}" || true)
 $([[ ${config[security]} == 'reality' ]] && echo "ShortId: ${config[short_id]}" || true)
     " | tr -s '\n')
